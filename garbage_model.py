@@ -73,3 +73,7 @@ for i, (image, label) in enumerate(test_data.gen_dataset().unbatch().take(100)):
   ax.xaxis.label.set_color(color)
   plt.xlabel('Predicted: %s' % predict_label)
 plt.show()
+
+model.export(export_dir='.')
+
+model.evaluate_tflite('model.tflite', test_data)
